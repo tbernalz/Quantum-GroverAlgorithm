@@ -38,9 +38,9 @@ def grover_algorithm(num_qubits, target_state):
 
 if __name__ == "__main__":
     try:
-        num_qubits = 3
-        target_state = 7
-        quantum_state = grover_algorithm(num_qubits, target_state)
-        print(f"The Quantum State is \n{quantum_state}")
+        num_qubits = int(input("Enter the number of qubits: "))
+        target_state = int(input("Enter the target state: "))
+        result = grover_algorithm(num_qubits, target_state)
+        print(f"The result is {result}")
     except ValueError as e:
         print(f"Error: {e}")
