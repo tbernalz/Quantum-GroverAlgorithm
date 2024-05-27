@@ -23,10 +23,13 @@ def grover_algorithm(num_qubits, target_state):
     quantum_state = np.full((2**num_qubits, 1), 1/np.sqrt(2**num_qubits))
     # Apply the oracle function
     oracle_matrix = oracle_function(num_qubits, target_state)
-    quantum_state = np.dot(oracle_matrix, quantum_state)
     # Apply the diffusion operator
     diffusion_matrix = diffusion_operator(num_qubits)
-    quantum_state = np.dot(diffusion_matrix, quantum_state)
+    
+    # Perform the Grover iteration
+    for _ in range(int(np.sqrt(2**num_qubits))):
+        quantum_state = np.dot(diffusion_matrix, np.dot(oracle_matrix, quantum_state))
+    
     return quantum_state
 
 if __name__ == "__main__":
