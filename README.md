@@ -1,7 +1,6 @@
 # Grover's Algorithm Implementation
 
-This project implements Grover's algorithm in Python using matrix operations with NumPy. It avoids any libraries or functions that specifically implement quantum operations. Grover's algorithm is a quantum algorithm designed to solve the unstructured search problem. It can find a marked element in a set of \( N \) elements in \( O(\sqrt{N}) \) time, compared to \( O(N) \) time for classical algorithms.
-
+This project implements Grover's algorithm in Python using matrix operations with NumPy. It avoids any libraries or functions that specifically implement quantum operations. Grover's algorithm is a quantum algorithm designed to solve the unstructured search problem. It can find a marked element in a set of N elements in O(√N) time, compared to O(N) time for classical algorithms.
 
 ## Table of Contents
 1. [Technologies](#technologies)
@@ -64,7 +63,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 5. Open a pull request
 
 ## Contact
-Tomás Bernal Zuluaga - tbernalz@eafit.edu.co
+Tomás Bernal Zuluaga - [tbernalz@eafit.edu.co](mailto:tbernalz@eafit.edu.co)
 
 <a href="https://www.linkedin.com/in/tbernalz" target="_blank" rel="noreferrer">
     <img src="https://seeklogo.com/images/L/linkedin-new-2020-logo-E14A5D55ED-seeklogo.com.png" alt="Linkedin" width="40" height="40"/>
