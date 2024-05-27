@@ -1,24 +1,28 @@
 import numpy as np
 
 def hadamard_transform(num_qubits):
+    # The Hadamard transform for n qubits is the nth tensor power of the base Hadamard matrix
     base_hadamard = 1/np.sqrt(2) * np.array([[1, 1],
                                               [1, -1]])
     hadamard_n_qubits = np.linalg.matrix_power(base_hadamard, num_qubits)
     return hadamard_n_qubits
 
 def oracle_function(num_qubits, target_state):
-    # Initialize the oracle matrix
+    if target_state >= 2**num_qubits:
+        raise ValueError("Target state must be less than 2^num_qubits")
+    # The oracle function flips the sign of the target state in the quantum state
     oracle_matrix = np.eye(2**num_qubits)
-    # Flip the sign of the target state
     oracle_matrix[target_state, target_state] = -1
     return oracle_matrix
 
 def diffusion_operator(num_qubits):
-    # Initialize the diffusion operator
+    # The diffusion operator applies a global phase flip to the quantum state
     diffusion_matrix = 2 * np.full((2**num_qubits, 2**num_qubits), 1/(2**num_qubits)) - np.eye(2**num_qubits)
     return diffusion_matrix
 
 def grover_algorithm(num_qubits, target_state):
+    if num_qubits <= 0:
+        raise ValueError("Number of qubits must be greater than 0")
     # Initialize the quantum state
     quantum_state = np.full((2**num_qubits, 1), 1/np.sqrt(2**num_qubits))
     # Apply the oracle function
@@ -33,7 +37,10 @@ def grover_algorithm(num_qubits, target_state):
     return quantum_state
 
 if __name__ == "__main__":
-    num_qubits = 3
-    target_state = 7
-    quantum_state = grover_algorithm(num_qubits, target_state)
-    print(f"The Quantum State is \n{quantum_state}")
+    try:
+        num_qubits = 3
+        target_state = 7
+        quantum_state = grover_algorithm(num_qubits, target_state)
+        print(f"The Quantum State is \n{quantum_state}")
+    except ValueError as e:
+        print(f"Error: {e}")
